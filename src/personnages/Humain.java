@@ -2,9 +2,9 @@ package personnages;
 
 public class Humain {
 
-	private String nom;
-	private String boissonfavorite;
-	private int argent;
+	protected String nom;
+	protected String boissonfavorite;
+	protected int argent;
 	
 	
 	public Humain(String nom, String boissonfavorite, int argent) {
@@ -23,8 +23,8 @@ public class Humain {
 		return argent;
 		}
 	
-	private String parler() {
-		return "("+nom +") -";
+	protected String parler() {
+		return "("+nom +") - ";
 		}
 	
 	public void gagnerArgent(int gain) {
@@ -37,7 +37,7 @@ public class Humain {
 	
 	
 	public void direBonjour() { 
-		System.out.println(parler()+"Bonjour ! Je m'appelle "+nom+" et j'aime boire du "+boissonfavorite);
+		System.out.println(parler()+"Bonjour ! Je m'appelle "+nom+" et j'aime boire du "+boissonfavorite+".");
 		}
 	
 	public void boire() {
