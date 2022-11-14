@@ -1,10 +1,14 @@
 package personnages;
 
-public class Humain {
 
+
+public class Humain {
+	static public int maxConnaissance = 30;
 	protected String nom;
 	protected String boissonfavorite;
 	protected int argent;
+	protected int nbConnaissance;
+	protected Humain[] memoire;
 	
 	
 	public Humain(String nom, String boissonfavorite, int argent) {
@@ -12,6 +16,7 @@ public class Humain {
 		this.nom = nom;
 		this.boissonfavorite = boissonfavorite;
 		this.argent = argent;
+		this.nbConnaissance = 0;
 		}
 	
 	
@@ -53,4 +58,30 @@ public class Humain {
 			}
 		}
 		
+	public void repondre(Humain humain) {
+		direBonjour();
+		memoriser(humain);
+		
+	}
+	
+	public void memoriser(Humain humain) {
+		if (nbConnaissance<maxConnaissance){
+			memoire[nbConnaissance] = humain;
+			nbConnaissance = nbConnaissance + 1;
+		}
+		else {
+			for (int i=0;i<maxConnaissance-1;i++) {
+				memoire[i]=memoire[i+1];
+			}
+			memoire[maxConnaissance]=humain;
+		}
+	}
+	
+	
+	public void faireConnaissanceAvec(Humain autreHumain) {
+		direBonjour();
+		autreHumain.repondre(this);
+	}
+	
+
 	}
